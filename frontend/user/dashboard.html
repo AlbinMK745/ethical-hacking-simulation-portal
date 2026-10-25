@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacker Portal - Dashboard</title>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/user.css" />
+  <link rel="stylesheet" href="css/daily-challenge.css" />
+  <link rel="stylesheet" href="css/saved-tutorials.css" />
+  <link rel="stylesheet" href="css/progress-graph.css" />
+  <link rel="stylesheet" href="css/notifications.css" />
+  <link rel="stylesheet" href="css/tutorials.css" />
+  <link rel="stylesheet" href="css/recent.css" />
+  <link rel="stylesheet" href="../components/chat/chat.css" />
+  <link rel="stylesheet" href="css/modules.css" />
+  <link rel="stylesheet" href="css/save-btn.css" />
+  <link rel="stylesheet" href="css/profile-edit-enhanced.css" />
+  <link rel="stylesheet" href="css/profile-display-enhanced.css" />
+  <link rel="stylesheet" href="css/progress.css" />
+  <link rel="stylesheet" href="css/challenges.css" />
+  <link rel="stylesheet" href="css/dashboard-ultra.css" />
+  <link rel="stylesheet" href="css/social.css" />
+  <style>
+    @keyframes xpShine {
+      0%   { transform: translateX(-100%); }
+      60%  { transform: translateX(200%); }
+      100% { transform: translateX(200%); }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Theme + XP + Onboarding + Real-time WS System -->
+  <script src="../js/xp-system.js"></script>
+  <script src="../js/streak-system.js"></script>
+  <script src="../js/theme-system.js"></script>
+  <script src="../js/onboarding.js"></script>
+  <script src="../js/ws-notifications.js"></script>
+
+  <!-- User Portal Components -->
+  <script type="text/babel" src="components/utils.jsx"></script>
+  <script type="text/babel" src="components/common.jsx"></script>
+  <script type="text/babel" src="components/skeleton-loaders.jsx"></script>
+  <script type="text/babel" src="components/streak-widget.jsx"></script>
+  <script type="text/babel" src="components/dashboard-view.jsx"></script>
+  <script type="text/babel" src="components/tutorials-view.jsx"></script>
+  <script type="text/babel" src="components/challenges-view.jsx"></script>
+  <script type="text/babel" src="components/daily-view.jsx"></script>
+  <script type="text/babel" src="components/leaderboard-view.jsx"></script>
+  <script type="text/babel" src="components/achievements-view.jsx"></script>
+  <script type="text/babel" src="components/progress-view.jsx"></script>
+  <script type="text/babel" src="components/notes-view.jsx?v=2.1"></script>
+  <script type="text/babel" src="components/notifications-view.jsx"></script>
+  <script type="text/babel" src="components/profile-view.jsx"></script>
+  <script type="text/babel" src="components/attempt-history-view.jsx"></script>
+  <script type="text/babel" src="components/recent-view.jsx"></script>
+  <script type="text/babel" src="components/social-view.jsx"></script>
+  <script type="text/babel" src="components/messenger-panel.jsx"></script>
+
+  <script src="../components/chat/chat.js"></script>
+  <script src="../js/animations.js"></script>
+
+  <!-- Main Orchestrator -->
+  <script type="text/babel" src="../react/user-dashboard.page.jsx"></script>
+</body>
+
+</html>

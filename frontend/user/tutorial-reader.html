@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Hacker Portal - Tutorial Reader</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;700&family=Roboto:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <link rel="stylesheet" href="css/user.css" />
+  <link rel="stylesheet" href="css/tutorials.css" />
+  <link rel="stylesheet" href="css/modules.css" />
+
+  <style>
+    /* ── Full-page reader layout ── */
+    html, body, #root {
+      height: 100%;
+      margin: 0;
+      padding: 0;
+      background: var(--bg-primary, #0a0a12);
+      color: var(--text-primary, #e2e8f0);
+    }
+
+    /* Back chevron in topbar */
+    .reader-topbar {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 0.9rem 1.5rem;
+      background: rgba(10,10,18,0.95);
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(8px);
+    }
+    .reader-back-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: #94a3b8;
+      padding: 0.4rem 1rem;
+      border-radius: 8px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all .2s;
+      letter-spacing: 0.5px;
+    }
+    .reader-back-btn:hover {
+      background: rgba(0,210,255,0.08);
+      border-color: rgba(0,210,255,0.3);
+      color: #00d2ff;
+    }
+    .reader-topbar-title {
+      font-family: 'Orbitron', monospace;
+      font-size: 0.85rem;
+      font-weight: 600;
+      color: #64748b;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    /* reader-tactical-layout fills below topbar */
+    .reader-page-body {
+      height: calc(100vh - 55px);
+      overflow: hidden;
+    }
+    .reader-page-body .reader-tactical-layout {
+      height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="root"></div>
+
+  <script src="https://unpkg.com/react@18/umd/react.development.js" crossorigin></script>
+  <script src="https://unpkg.com/react-dom@18/umd/react-dom.development.js" crossorigin></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+
+  <!-- Shared utilities -->
+  <script type="text/babel" src="components/utils.jsx"></script>
+  <script type="text/babel" src="components/common.jsx"></script>
+
+  <!-- Tutorial reader component (reuses TutorialReadingView from tutorials-view.jsx) -->
+  <script type="text/babel" src="components/tutorials-view.jsx"></script>
+
+  <!-- Page orchestrator -->
+  <script type="text/babel" src="../react/tutorial-reader.page.jsx"></script>
+</body>
+
+</html>

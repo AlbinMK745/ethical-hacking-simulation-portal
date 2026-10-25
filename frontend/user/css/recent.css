@@ -1,0 +1,298 @@
+/* =========================================
+   RECENTLY VIEWED PAGE - PREMIUM CARD LAYOUT
+   ========================================= */
+
+.rv-page {
+    padding: 2rem;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+/* --- Header --- */
+.rv-page-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+    padding-bottom: 1.2rem;
+    border-bottom: 1px solid rgba(0, 255, 242, 0.15);
+}
+
+.rv-page-header h2 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: #e2e8f0;
+    margin: 0 0 4px 0;
+}
+
+.rv-page-header h2 i {
+    color: var(--neon-blue, #00d2ff);
+    margin-right: 10px;
+}
+
+.rv-subtitle {
+    color: #718096;
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* --- Empty State --- */
+.rv-empty {
+    text-align: center;
+    padding: 5rem 2rem;
+    color: #718096;
+}
+
+.rv-empty i {
+    font-size: 4rem;
+    margin-bottom: 1.5rem;
+    color: #2d3748;
+}
+
+.rv-empty h3 {
+    font-size: 1.4rem;
+    color: #a0aec0;
+    margin-bottom: 0.5rem;
+}
+
+.rv-empty p {
+    font-size: 0.9rem;
+    margin-bottom: 2rem;
+}
+
+/* --- Cards Grid --- */
+.rv-cards {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+/* --- Single Card --- */
+.rv-card {
+    background: rgba(17, 27, 43, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 12px;
+    padding: 1.2rem 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+}
+
+.rv-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 3px;
+    background: var(--neon-blue, #00d2ff);
+    opacity: 0;
+    transition: opacity 0.2s;
+}
+
+.rv-card:hover {
+    border-color: rgba(0, 210, 255, 0.3);
+    background: rgba(0, 210, 255, 0.04);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 20px rgba(0, 210, 255, 0.06);
+}
+
+.rv-card:hover::before {
+    opacity: 1;
+}
+
+.rv-card-done {
+    border-color: rgba(0, 255, 150, 0.15);
+}
+
+.rv-card-done::before {
+    background: #00ff96;
+}
+
+/* --- Card Icon --- */
+.rv-card-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 10px;
+    background: rgba(0, 210, 255, 0.08);
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    color: var(--neon-blue, #00d2ff);
+    flex-shrink: 0;
+}
+
+.rv-card-done .rv-card-icon {
+    background: rgba(0, 255, 150, 0.08);
+    border-color: rgba(0, 255, 150, 0.2);
+    color: #00ff96;
+}
+
+/* --- Card Body --- */
+.rv-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.rv-card-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 0.5rem;
+    margin-bottom: 0.4rem;
+    flex-wrap: wrap;
+}
+
+.rv-card-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    margin: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 360px;
+}
+
+/* --- Status Pill --- */
+.rv-status {
+    font-size: 0.72rem;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    flex-shrink: 0;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.rv-status-done {
+    background: rgba(0, 255, 150, 0.12);
+    color: #00ff96;
+    border: 1px solid rgba(0, 255, 150, 0.3);
+}
+
+.rv-status-progress {
+    background: rgba(255, 200, 0, 0.1);
+    color: #ffc800;
+    border: 1px solid rgba(255, 200, 0, 0.3);
+}
+
+.rv-status-started {
+    background: rgba(160, 174, 192, 0.08);
+    color: #a0aec0;
+    border: 1px solid rgba(160, 174, 192, 0.2);
+}
+
+/* --- Card Meta row --- */
+.rv-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+}
+
+.rv-badge-cat {
+    font-size: 0.75rem;
+    color: #a0aec0;
+    background: rgba(255,255,255,0.05);
+    padding: 2px 8px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.rv-badge-diff {
+    font-size: 0.7rem;
+    font-weight: bold;
+    padding: 2px 8px;
+    border-radius: 4px;
+    text-transform: uppercase;
+}
+
+.rv-badge-diff.beginner { background: rgba(0,255,150,0.1); color: #00ff96; }
+.rv-badge-diff.intermediate { background: rgba(255,200,0,0.1); color: #ffc800; }
+.rv-badge-diff.hard { background: rgba(255,100,100,0.1); color: #ff6464; }
+
+.rv-timestamp {
+    font-size: 0.75rem;
+    color: #718096;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    margin-left: auto;
+}
+
+/* --- Progress bar --- */
+.rv-progress-bar-wrap {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.rv-progress-bar-bg {
+    flex: 1;
+    height: 5px;
+    background: rgba(255,255,255,0.06);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.rv-progress-bar-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #00d2ff, #00ff96);
+    border-radius: 3px;
+    transition: width 0.6s ease;
+}
+
+.rv-progress-pct {
+    font-size: 0.7rem;
+    color: #a0aec0;
+    white-space: nowrap;
+}
+
+/* --- Action Button --- */
+.rv-card-action {
+    flex-shrink: 0;
+}
+
+.rv-btn-action {
+    background: transparent;
+    border: 1px solid rgba(0, 210, 255, 0.4);
+    color: var(--neon-blue, #00d2ff);
+    padding: 0.4rem 1.1rem;
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+}
+
+.rv-btn-action:hover {
+    background: rgba(0, 210, 255, 0.1);
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.2);
+    border-color: rgba(0, 210, 255, 0.8);
+}
+
+.rv-card-done .rv-btn-action {
+    border-color: rgba(0, 255, 150, 0.4);
+    color: #00ff96;
+}
+
+.rv-card-done .rv-btn-action:hover {
+    background: rgba(0, 255, 150, 0.08);
+    box-shadow: 0 0 12px rgba(0, 255, 150, 0.15);
+}
