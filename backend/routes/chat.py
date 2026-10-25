@@ -7,6 +7,7 @@ import os
 router = APIRouter(prefix="/user/chat", tags=["chat"])
 
 # --- Configuration ---
+<<<<<<< HEAD
 # API key loaded securely from environment / backend/.env
 API_KEY = os.getenv("GEMINI_API_KEY", "")
 
@@ -15,6 +16,11 @@ def get_genai_client():
     if not key:
         return None
     return genai.Client(api_key=key)
+=======
+# ideally this should be in .env, but user provided it directly
+API_KEY = "AIzaSyBsbbKBW6OPZxud6hjUcOhmglnyyjPEDR8"
+client = genai.Client(api_key=API_KEY)
+>>>>>>> 45d12f71247f4a3f46d8185a27602c16e9749314
 
 # Initialize Model
 # Using 'gemini-2.5-flash' (Current stable version, higher rate limits)
@@ -100,12 +106,15 @@ async def chat_with_mentor(request: ChatRequest):
         # Let's format the contents list including the system instruction as a system implementation details
         # The new SDK supports `config` with `system_instruction`.
         
+<<<<<<< HEAD
         client = get_genai_client()
         if not client:
             return ChatResponse(
                 content="AI Mentor is offline: GEMINI_API_KEY is not configured in backend/.env."
             )
 
+=======
+>>>>>>> 45d12f71247f4a3f46d8185a27602c16e9749314
         response = client.models.generate_content(
             model=MODEL_ID,
             contents=gemini_history,
