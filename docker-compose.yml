@@ -1,0 +1,116 @@
+version: "3.9"
+
+# ──────────────────────────────────────────────────────────────────────────────
+# Ethical Hacking Portal – Simulation Containers
+#
+# Each simulation runs on port 5000 internally.
+# They are mapped to unique host ports so they can run simultaneously.
+#
+# Port map:
+#   xss-reflected          → http://localhost:5001
+#   sqli-login             → http://localhost:5002
+#   blind-sqli             → http://localhost:5003
+#   cmd-injection          → http://localhost:5004
+#   rce-eval               → http://localhost:5005
+#   stored-xss             → http://localhost:5006
+#   ssrf                   → http://localhost:5007
+#   jwt-manipulation       → http://localhost:5008
+#   idor-profile           → http://localhost:5009
+#   broken-access-control  → http://localhost:5010
+#   hardcoded-creds        → http://localhost:5011
+#   linux-flag-hunt        → http://localhost:5012
+#   priv-esc               → http://localhost:5013
+# ──────────────────────────────────────────────────────────────────────────────
+
+services:
+
+  xss-reflected:
+    build: ./simulations/xss-reflected
+    container_name: sim-xss-reflected
+    ports:
+      - "5001:5000"
+    restart: unless-stopped
+
+  sqli-login:
+    build: ./simulations/sqli-login
+    container_name: sim-sqli-login
+    ports:
+      - "5002:5000"
+    restart: unless-stopped
+
+  blind-sqli:
+    build: ./simulations/blind-sqli
+    container_name: sim-blind-sqli
+    ports:
+      - "5003:5000"
+    restart: unless-stopped
+
+  cmd-injection:
+    build: ./simulations/cmd-injection
+    container_name: sim-cmd-injection
+    ports:
+      - "5004:5000"
+    restart: unless-stopped
+
+  rce-eval:
+    build: ./simulations/rce-eval
+    container_name: sim-rce-eval
+    ports:
+      - "5005:5000"
+    restart: unless-stopped
+
+  stored-xss:
+    build: ./simulations/stored-xss
+    container_name: sim-stored-xss
+    ports:
+      - "5006:5000"
+    restart: unless-stopped
+
+  ssrf:
+    build: ./simulations/ssrf
+    container_name: sim-ssrf
+    ports:
+      - "5007:5000"
+    restart: unless-stopped
+
+  jwt-manipulation:
+    build: ./simulations/jwt-manipulation
+    container_name: sim-jwt-manipulation
+    ports:
+      - "5008:5000"
+    restart: unless-stopped
+
+  idor-profile:
+    build: ./simulations/idor-profile
+    container_name: sim-idor-profile
+    ports:
+      - "5009:5000"
+    restart: unless-stopped
+
+  broken-access-control:
+    build: ./simulations/broken-access-control
+    container_name: sim-broken-access-control
+    ports:
+      - "5010:5000"
+    restart: unless-stopped
+
+  hardcoded-creds:
+    build: ./simulations/hardcoded-creds
+    container_name: sim-hardcoded-creds
+    ports:
+      - "5011:5000"
+    restart: unless-stopped
+
+  linux-flag-hunt:
+    build: ./simulations/linux-flag-hunt
+    container_name: sim-linux-flag-hunt
+    ports:
+      - "5012:5000"
+    restart: unless-stopped
+
+  priv-esc:
+    build: ./simulations/priv-esc
+    container_name: sim-priv-esc
+    ports:
+      - "5013:5000"
+    restart: unless-stopped

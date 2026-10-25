@@ -1,0 +1,348 @@
+/* =========================================
+   DAILY CHALLENGE STYLES
+   ========================================= */
+
+:root {
+    --daily-cyan: #00f2ff;
+    --daily-cyan-glow: rgba(0, 242, 255, 0.4);
+    --daily-bg-dark: #0a0e14;
+    --daily-card-bg: rgba(15, 23, 42, 0.8);
+    --daily-border: rgba(51, 65, 85, 0.5);
+}
+
+.daily-challenge-view {
+    height: 100%;
+    overflow-y: auto !important;
+    padding: 0;
+    margin: 0;
+}
+
+.daily-challenge-container {
+    padding: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    font-family: 'Roboto', sans-serif;
+    color: #e2e8f0;
+}
+
+/* Header Section */
+.daily-challenge-header-section {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.daily-icon {
+    width: 50px;
+    height: 50px;
+    background: var(--daily-cyan);
+    color: #000;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    box-shadow: 0 0 20px var(--daily-cyan-glow);
+}
+
+.daily-header-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    margin-bottom: 0.25rem;
+}
+
+.daily-subtitle {
+    color: #94a3b8;
+    font-size: 0.95rem;
+}
+
+/* Main Card */
+.daily-challenge-main-card {
+    background: var(--daily-card-bg);
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--daily-border);
+    border-radius: 20px;
+    padding: 2.5rem;
+    position: relative;
+    overflow: hidden;
+    margin-bottom: 2rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.daily-challenge-main-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--daily-cyan), transparent);
+}
+
+.challenge-main-title {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 2rem;
+    color: #fff;
+    margin-bottom: 1rem;
+}
+
+.challenge-main-description {
+    color: #cbd5e1;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+/* Tags Row */
+.challenge-tags-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+}
+
+.challenge-tags-row span {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.5rem 1rem;
+    border-radius: 8px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.tag-category {
+    background: rgba(30, 41, 59, 0.8);
+    color: var(--daily-cyan);
+    border: 1px solid var(--daily-cyan);
+}
+
+.tag-difficulty.easy {
+    background: rgba(74, 222, 128, 0.1);
+    color: #4ade80;
+    border: 1px solid #4ade80;
+}
+
+.tag-difficulty.intermediate {
+    background: rgba(251, 191, 36, 0.1);
+    color: #fbbf24;
+    border: 1px solid #fbbf24;
+}
+
+.tag-difficulty.hard {
+    background: rgba(248, 113, 113, 0.1);
+    color: #f87171;
+    border: 1px solid #f87171;
+}
+
+.tag-time {
+    background: rgba(15, 23, 42, 0.9);
+    color: #fff;
+    border: 1px solid #334155;
+}
+
+#bonus-timer {
+    font-family: 'Orbitron', sans-serif;
+    color: var(--daily-cyan);
+    text-shadow: 0 0 10px var(--daily-cyan-glow);
+}
+
+/* Stats Grid */
+.challenge-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+}
+
+.stat-item {
+    background: rgba(30, 41, 59, 0.4);
+    border: 1px solid var(--daily-border);
+    padding: 1.25rem;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.stat-label {
+    color: #94a3b8;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.stat-number {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.5rem;
+    color: #fff;
+}
+
+/* Start Button */
+.btn-start-daily-challenge {
+    width: 100%;
+    background: var(--daily-cyan);
+    color: #000;
+    border: none;
+    padding: 1.25rem;
+    border-radius: 12px;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+}
+
+.btn-start-daily-challenge:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px var(--daily-cyan-glow);
+    background: #4efbff;
+}
+
+.btn-completed-challenge {
+    background: rgba(74, 222, 128, 0.2);
+    color: #4ade80;
+    border: 1px solid #4ade80;
+    cursor: default;
+}
+
+.btn-completed-challenge:hover {
+    transform: none;
+    box-shadow: none;
+    background: rgba(74, 222, 128, 0.2);
+}
+
+/* Top Solvers Section */
+.top-solvers-section {
+    background: var(--daily-card-bg);
+    border: 1px solid var(--daily-border);
+    border-radius: 20px;
+    padding: 2rem;
+}
+
+.top-solvers-header {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 1.25rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.top-solvers-header i {
+    color: #fbbf24;
+}
+
+.solver-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(30, 41, 59, 0.4);
+    margin-bottom: 1rem;
+    border: 1px solid transparent;
+    transition: all 0.2s ease;
+}
+
+.solver-item:hover {
+    border-color: #475569;
+    background: rgba(30, 41, 59, 0.6);
+}
+
+.solver-left {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+}
+
+.solver-rank {
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+}
+
+.solver-rank.gold {
+    background: rgba(251, 191, 36, 0.2);
+    color: #fbbf24;
+    border: 1px solid #fbbf24;
+}
+
+.solver-rank.silver {
+    background: rgba(203, 213, 225, 0.2);
+    color: #cbd5e1;
+    border: 1px solid #cbd5e1;
+}
+
+.solver-rank.bronze {
+    background: rgba(180, 83, 9, 0.2);
+    color: #d97706;
+    border: 1px solid #d97706;
+}
+
+.solver-rank.default {
+    background: rgba(51, 65, 85, 0.5);
+    color: #94a3b8;
+}
+
+.solver-name {
+    font-weight: 600;
+    color: #fff;
+    margin-bottom: 0.2rem;
+}
+
+.solver-time {
+    font-size: 0.8rem;
+    color: #94a3b8;
+}
+
+.solver-points {
+    color: #4ade80;
+    font-weight: 700;
+    font-family: 'Orbitron', sans-serif;
+}
+
+/* Animations */
+@keyframes pulse {
+    0% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.5;
+    }
+
+    100% {
+        opacity: 1;
+    }
+}
+
+.daily-loading {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 400px;
+    gap: 1rem;
+    color: var(--daily-cyan);
+}
+
+.daily-loading i {
+    font-size: 3rem;
+    animation: spin 1s linear infinite;
+}

@@ -1,0 +1,593 @@
+/* ============================================================
+   EHSP CHALLENGES PAGE — ELITE CYBERNETIC REDESIGN
+   Professional Cyber Warfare & Penetration Testing Matrix
+   ============================================================ */
+
+/* ── Page Layout ────────────────────────────────────────── */
+.challenges-page {
+    padding: 24px 32px;
+    max-width: 1700px;
+    margin: 0 auto;
+    position: relative;
+}
+
+/* ── Top Command Toolbar ─────────────────────────────────── */
+.chal-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 16px;
+    margin-bottom: 28px;
+    padding: 18px 24px;
+    background: linear-gradient(135deg, rgba(8, 14, 28, 0.88), rgba(14, 22, 44, 0.82));
+    border: 1px solid rgba(0, 210, 255, 0.2);
+    border-radius: 16px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.45), 0 0 20px rgba(0, 210, 255, 0.05);
+    backdrop-filter: blur(16px);
+    position: relative;
+    overflow: hidden;
+}
+.chal-toolbar::before {
+    content: '';
+    position: absolute;
+    top: 0; left: -60%; width: 40%; height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(0, 210, 255, 0.1), transparent);
+    animation: chalToolSweep 5s ease-in-out infinite;
+    pointer-events: none;
+}
+@keyframes chalToolSweep {
+    0% { left: -60%; }
+    100% { left: 140%; }
+}
+
+.chal-toolbar-title {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.chal-title-big {
+    font-size: 1.25rem;
+    font-weight: 800;
+    font-family: 'Outfit', sans-serif;
+    color: #ffffff;
+    letter-spacing: 0.02em;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.chal-title-big::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 18px;
+    border-radius: 2px;
+    background: #00d2ff;
+    box-shadow: 0 0 10px #00d2ff;
+}
+.chal-solved-count {
+    font-size: 0.74rem;
+    color: #38bdf8;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.chal-toolbar-right {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+/* ── Filter Pills ────────────────────────────────────────── */
+.chal-filter-pills {
+    display: flex;
+    gap: 7px;
+    flex-wrap: wrap;
+}
+
+.chal-pill {
+    padding: 7px 16px;
+    border-radius: 9999px;
+    border: 1px solid rgba(255, 255, 255, 0.09);
+    background: rgba(15, 23, 42, 0.6);
+    color: #94a3b8;
+    font-size: 0.76rem;
+    font-weight: 600;
+    cursor: pointer;
+    letter-spacing: 0.03em;
+    transition: all 0.22s cubic-bezier(.22, 1, .36, 1);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Inter', sans-serif;
+}
+.pill-count {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 19px;
+    height: 19px;
+    border-radius: 9999px;
+    background: rgba(255, 255, 255, 0.07);
+    font-size: 0.68rem;
+    font-family: 'JetBrains Mono', monospace;
+    font-weight: 700;
+    padding: 0 5px;
+}
+.chal-pill:hover {
+    color: #fff;
+    border-color: rgba(0, 210, 255, 0.35);
+    background: rgba(0, 210, 255, 0.08);
+    transform: translateY(-1px);
+}
+.chal-pill.active {
+    background: rgba(0, 210, 255, 0.16);
+    border-color: #00d2ff;
+    color: #38bdf8;
+    box-shadow: 0 0 16px rgba(0, 210, 255, 0.25);
+}
+.chal-pill.active .pill-count {
+    background: rgba(0, 210, 255, 0.25);
+    color: #fff;
+}
+.chal-pill.easy.active {
+    background: rgba(16, 185, 129, 0.16);
+    border-color: #10b981;
+    color: #34d399;
+    box-shadow: 0 0 16px rgba(16, 185, 129, 0.25);
+}
+.chal-pill.medium.active {
+    background: rgba(245, 158, 11, 0.16);
+    border-color: #f59e0b;
+    color: #fbbf24;
+    box-shadow: 0 0 16px rgba(245, 158, 11, 0.25);
+}
+.chal-pill.hard.active {
+    background: rgba(244, 63, 94, 0.16);
+    border-color: #f43f5e;
+    color: #fda4af;
+    box-shadow: 0 0 16px rgba(244, 63, 94, 0.25);
+}
+
+/* ── Live Search Input ───────────────────────────────────── */
+.chal-search-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(6, 10, 20, 0.8);
+    border: 1px solid rgba(0, 210, 255, 0.22);
+    border-radius: 10px;
+    padding: 8px 16px;
+    min-width: 240px;
+    transition: all 0.25s ease;
+}
+.chal-search-wrap:focus-within {
+    border-color: #00d2ff;
+    background: rgba(10, 16, 32, 0.95);
+    box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.12), 0 0 18px rgba(0, 210, 255, 0.15);
+}
+.chal-search-icon {
+    color: #00d2ff;
+    font-size: 0.85rem;
+    opacity: 0.7;
+}
+.chal-search-input {
+    background: none;
+    border: none;
+    outline: none;
+    color: #f8fafc;
+    font-size: 0.82rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.02em;
+    width: 100%;
+}
+.chal-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.28);
+}
+
+/* ── Challenge Grid ──────────────────────────────────────── */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 24px;
+}
+
+/* ═══════════════════════════════════════════════════════════
+   ELITE CYBER CHALLENGE CARD
+   ═══════════════════════════════════════════════════════════ */
+.chal-card {
+    position: relative;
+    background: linear-gradient(160deg, rgba(13, 20, 36, 0.9), rgba(6, 10, 22, 0.96));
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(14px);
+    transition: transform 0.35s cubic-bezier(.22, 1, .36, 1),
+                box-shadow 0.35s ease,
+                border-color 0.35s ease;
+    animation: chalCardIn 0.45s cubic-bezier(.22, 1, .36, 1) both;
+}
+@keyframes chalCardIn {
+    from { opacity: 0; transform: translateY(20px) scale(0.98); }
+    to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.chal-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65),
+                0 0 0 1px rgba(0, 210, 255, 0.35),
+                0 0 28px rgba(0, 210, 255, 0.1);
+    border-color: rgba(0, 210, 255, 0.4);
+}
+
+/* Difficulty Tint Indicator */
+.chal-card::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 0; bottom: 0;
+    width: 4px;
+    border-radius: 4px 0 0 4px;
+    background: #00d2ff;
+    box-shadow: 0 0 10px currentColor;
+    transition: width 0.25s ease;
+}
+.chal-card:hover::before {
+    width: 5px;
+}
+.chal-card.diff-easy::before   { background: #10b981; }
+.chal-card.diff-medium::before { background: #f59e0b; }
+.chal-card.diff-hard::before   { background: #f43f5e; box-shadow: 0 0 12px rgba(244, 63, 94, 0.5); }
+.chal-card.diff-insane::before { background: #a855f7; }
+
+/* Solved Card Highlights */
+.chal-card.solved-card {
+    border-color: rgba(16, 185, 129, 0.3);
+    background: linear-gradient(160deg, rgba(8, 26, 22, 0.88), rgba(4, 12, 10, 0.96));
+}
+.chal-card.solved-card::before {
+    background: #10b981;
+}
+.chal-card.solved-card:hover {
+    border-color: rgba(16, 185, 129, 0.6);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.65),
+                0 0 0 1px rgba(16, 185, 129, 0.4),
+                0 0 28px rgba(16, 185, 129, 0.12);
+}
+
+/* ── Card Top Header ─────────────────────────────────────── */
+.chal-card-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px 0;
+    gap: 10px;
+}
+
+/* Difficulty Badge */
+.diff-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 3px 11px;
+    border-radius: 9999px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    font-family: 'JetBrains Mono', monospace;
+}
+.diff-badge.easy {
+    background: rgba(16, 185, 129, 0.14);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.35);
+}
+.diff-badge.medium {
+    background: rgba(245, 158, 11, 0.14);
+    color: #fbbf24;
+    border: 1px solid rgba(245, 158, 11, 0.35);
+}
+.diff-badge.hard {
+    background: rgba(244, 63, 94, 0.14);
+    color: #fda4af;
+    border: 1px solid rgba(244, 63, 94, 0.35);
+}
+.diff-badge.insane {
+    background: rgba(168, 85, 247, 0.14);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.35);
+}
+
+/* Status Badges */
+.solved-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 3px 10px;
+    border-radius: 9999px;
+    font-size: 0.66rem;
+    font-weight: 700;
+    background: rgba(16, 185, 129, 0.15);
+    color: #34d399;
+    border: 1px solid rgba(16, 185, 129, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-family: 'JetBrains Mono', monospace;
+}
+.running-badge {
+    background: rgba(245, 158, 11, 0.15);
+    color: #fbbf24;
+    border-color: rgba(245, 158, 11, 0.4);
+}
+.pulse {
+    animation: pulseDot 1.4s ease-in-out infinite;
+}
+@keyframes pulseDot {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.85); }
+}
+
+/* ── Card Body Content ───────────────────────────────────── */
+.chal-card-body {
+    padding: 12px 20px 0;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.chal-cat-tag {
+    font-size: 0.68rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: rgba(0, 210, 255, 0.8);
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'JetBrains Mono', monospace;
+}
+.chal-cat-tag::before {
+    content: '';
+    display: inline-block;
+    width: 14px;
+    height: 1.5px;
+    background: #00d2ff;
+    box-shadow: 0 0 6px #00d2ff;
+}
+
+.chal-title {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: #ffffff;
+    line-height: 1.4;
+    font-family: 'Outfit', sans-serif;
+    margin: 0;
+}
+
+.chal-desc {
+    font-size: 0.82rem;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin: 0 0 6px 0;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-family: 'Inter', sans-serif;
+    font-weight: 400;
+}
+
+/* ── Metadata & Badges Row ───────────────────────────────── */
+.chal-meta-row {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 6px 20px 0;
+}
+.chal-pts-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    background: rgba(168, 85, 247, 0.14);
+    color: #c084fc;
+    border: 1px solid rgba(168, 85, 247, 0.3);
+    font-family: 'JetBrains Mono', monospace;
+}
+.chal-cat-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 10px;
+    border-radius: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: rgba(0, 210, 255, 0.08);
+    color: rgba(0, 210, 255, 0.85);
+    border: 1px solid rgba(0, 210, 255, 0.18);
+    font-family: 'Inter', sans-serif;
+}
+
+/* ── Lab Launcher Section ────────────────────────────────── */
+.chal-lab-section {
+    padding: 12px 20px 0;
+}
+.modal-submit-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 18px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 210, 255, 0.5);
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.18), rgba(16, 185, 129, 0.08));
+    color: #38bdf8;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    cursor: pointer;
+    width: 100%;
+    justify-content: center;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.25s cubic-bezier(.22, 1, .36, 1);
+    position: relative;
+    overflow: hidden;
+}
+.modal-submit-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 24px rgba(0, 210, 255, 0.3), 0 0 0 1px rgba(0, 210, 255, 0.6);
+    background: linear-gradient(135deg, rgba(0, 210, 255, 0.28), rgba(16, 185, 129, 0.15));
+    color: #fff;
+}
+.modal-submit-btn:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.chal-lab-running {
+    display: flex;
+    gap: 8px;
+}
+.btn-outline {
+    flex: 1;
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: 1px solid rgba(0, 210, 255, 0.35);
+    background: rgba(0, 210, 255, 0.08);
+    color: #38bdf8;
+    font-size: 0.74rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    font-family: 'Outfit', sans-serif;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+.btn-outline:hover {
+    border-color: #00d2ff;
+    color: #fff;
+    background: rgba(0, 210, 255, 0.18);
+    box-shadow: 0 0 14px rgba(0, 210, 255, 0.25);
+}
+.btn-outline:last-child {
+    border-color: rgba(244, 63, 94, 0.35);
+    background: rgba(244, 63, 94, 0.08);
+    color: #fda4af;
+}
+.btn-outline:last-child:hover {
+    border-color: #f43f5e;
+    color: #fff;
+    background: rgba(244, 63, 94, 0.18);
+    box-shadow: 0 0 14px rgba(244, 63, 94, 0.25);
+}
+
+/* ── Flag Input & Submit Row ─────────────────────────────── */
+.chal-flag-row {
+    display: flex;
+    gap: 8px;
+    padding: 12px 20px 0;
+}
+.modal-input {
+    flex: 1;
+    background: rgba(3, 7, 18, 0.85);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 8px;
+    padding: 9px 13px;
+    color: #f8fafc;
+    font-size: 0.8rem;
+    font-family: 'JetBrains Mono', monospace;
+    outline: none;
+    letter-spacing: 0.03em;
+    transition: border-color 0.25s, box-shadow 0.25s;
+}
+.modal-input::placeholder {
+    color: rgba(255, 255, 255, 0.22);
+}
+.modal-input:focus {
+    border-color: #00d2ff;
+    box-shadow: 0 0 0 3px rgba(0, 210, 255, 0.12), 0 0 16px rgba(0, 210, 255, 0.15);
+}
+.chal-flag-row .modal-submit-btn {
+    width: auto;
+    flex-shrink: 0;
+    padding: 9px 16px;
+    font-size: 0.74rem;
+}
+
+/* ── AI Intelligence Buttons Row ─────────────────────────── */
+.ai-btn-row {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    padding: 12px 20px 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    margin-top: 12px;
+}
+.ai-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 6px 13px;
+    border-radius: 6px;
+    border: 1px solid rgba(0, 210, 255, 0.3);
+    background: rgba(0, 210, 255, 0.06);
+    color: #38bdf8;
+    font-size: 0.74rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    font-family: 'Inter', sans-serif;
+}
+.ai-btn:hover:not(:disabled) {
+    background: rgba(0, 210, 255, 0.16);
+    border-color: #00d2ff;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(0, 210, 255, 0.25);
+    transform: translateY(-1px);
+}
+.ai-btn:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+.ai-btn--expl {
+    border-color: rgba(168, 85, 247, 0.35);
+    color: #c084fc;
+    background: rgba(168, 85, 247, 0.06);
+}
+.ai-btn--expl:hover:not(:disabled) {
+    background: rgba(168, 85, 247, 0.16);
+    border-color: #a855f7;
+    color: #fff;
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.25);
+}
+
+/* ── Staggered Entrance Animations ───────────────────────── */
+.chal-card:nth-child(1)  { animation-delay: 0.03s; }
+.chal-card:nth-child(2)  { animation-delay: 0.06s; }
+.chal-card:nth-child(3)  { animation-delay: 0.09s; }
+.chal-card:nth-child(4)  { animation-delay: 0.12s; }
+.chal-card:nth-child(5)  { animation-delay: 0.15s; }
+.chal-card:nth-child(6)  { animation-delay: 0.18s; }
+.chal-card:nth-child(7)  { animation-delay: 0.21s; }
+.chal-card:nth-child(8)  { animation-delay: 0.24s; }
+.chal-card:nth-child(9)  { animation-delay: 0.27s; }
+.chal-card:nth-child(10) { animation-delay: 0.30s; }
+.chal-card:nth-child(11) { animation-delay: 0.33s; }
+.chal-card:nth-child(12) { animation-delay: 0.36s; }
+.chal-card:nth-child(13) { animation-delay: 0.39s; }
